@@ -2,16 +2,11 @@ public class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
         int count = 0;
         List<List<String>> res = new ArrayList<>();
-        HashMap<HashMap<Character, Integer>, Integer> map = new HashMap<>();
+        HashMap<String, Integer> map = new HashMap<>();
         for(String str : strs) {
-            HashMap<Character, Integer> tmp = new HashMap<>();
-            for(int i = 0; i < str.length(); i++) {
-                if(!tmp.containsKey(str.charAt(i))) {
-                    tmp.put(str.charAt(i), 1);
-                } else {
-                    tmp.replace(str.charAt(i), tmp.get(str.charAt(i)) + 1);
-                }
-            }
+            char[] ca = str.toCharArray();
+            Arrays.sort(ca);
+            String tmp = String.valueOf(ca);
             if(!map.containsKey(tmp)) { // no such an anagram
                 List<String> tmpList = new ArrayList<>();
                 tmpList.add(str);
