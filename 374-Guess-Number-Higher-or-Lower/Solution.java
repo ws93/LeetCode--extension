@@ -6,7 +6,7 @@
 public class Solution extends GuessGame {
     public int guessNumber(int n) {
         int low = 1, high = n, mid = 1;
-        while(low < high) {
+        while(low + 1 < high) {
             mid = low + (high - low) / 2;
             if(guess(mid) == 0) {
                 return mid;
@@ -16,6 +16,10 @@ public class Solution extends GuessGame {
                 low = mid;
             }
         }
-        return mid;
+        if(guess(low) == 0){
+            return low;
+        } else {
+            return high;
+        }
     }
 }
