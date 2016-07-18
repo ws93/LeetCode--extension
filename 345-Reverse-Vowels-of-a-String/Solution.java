@@ -1,4 +1,4 @@
-// with memo
+// with stack
 public class Solution {
     public String reverseVowels(String s) {
         Set<Character> vowel = new HashSet<>();
@@ -12,10 +12,10 @@ public class Solution {
         vowel.add('I');
         vowel.add('O');
         vowel.add('U');        
-        List<Character> list = new ArrayList<>();
+        Stack<Character> list = new Stack<>();
         for(int i = 0; i < s.length(); i++) {
             if(vowel.contains(s.charAt(i))) {
-                list.add(0, s.charAt(i));
+                list.push(s.charAt(i));
             }
         }
         StringBuilder sb = new StringBuilder();
@@ -23,7 +23,7 @@ public class Solution {
             if(!vowel.contains(s.charAt(i))) {
                 sb.append(s.charAt(i));
             } else {
-                sb.append(list.remove(0));
+                sb.append(list.pop());
             }
         }
         return sb.toString();
