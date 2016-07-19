@@ -10,6 +10,9 @@ Given s = "hello", return "holle".
 **Example 2:**  
 Given s = "leetcode", return "leotcede".
 
+**Note:**  
+The vowels does not include the letter "y".
+
 <div>
 
 [Subscribe](/subscribe/) to see which companies asked this question
