@@ -21,9 +21,9 @@ public class Twitter {
     public List<Integer> getNewsFeed(int userId) {
         int count = 0;
         List<Integer> res = new ArrayList<>();
-        for(int i = allNews.size() - 1; i >= 0 && count <= 10; i--) {
+        for(int i = allNews.size() - 1; i >= 0 && count < 10; i--) {
             int user = allNews.get(i).get(0);
-            if(user == userId || followMap.get(userId).contains(user)) { // if this is the user or the user this follows
+            if(user == userId || (followMap.containsKey(userId) && followMap.get(userId).contains(user))) { // if this is the user or the user this follows
                 res.add(allNews.get(i).get(1));
                 count++;
             }
