@@ -6,16 +6,16 @@ public class Solution {
                 
                 //i to j
                 if(isPalin(words[i].concat(words[j]))) {
-                    List<Integer> tmp1 =  new ArrayList<>();
-                    tmp1.add(i);
-                    tmp1.add(j);
-                    res.add(tmp1);
+                    // List<Integer> tmp1 =  new ArrayList<>();
+                    // tmp1.add(i);
+                    // tmp1.add(j);
+                    res.add(Arrays.asList(i, j));
                 }
                 if(isPalin(words[j].concat(words[i]))) {
-                    List<Integer> tmp2 =  new ArrayList<>();
-                    tmp2.add(j);
-                    tmp2.add(i);
-                    res.add(tmp2);
+                    // List<Integer> tmp2 =  new ArrayList<>();
+                    // tmp2.add(j);
+                    // tmp2.add(i);
+                    res.add(Arrays.asList(j, i));
                 }                
             }
         }
