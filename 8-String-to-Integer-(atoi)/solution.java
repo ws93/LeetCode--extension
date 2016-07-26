@@ -1,16 +1,31 @@
 public class Solution {
     public int myAtoi(String str) {
-        if(str == null) {
+        if(str == null || str.length() == 0) {
             return 0;
         }
-        int sign = (str.charAt(0) == '-') ? -1 : 1;
-        int res = 0, i = sign == -1 ? 1 : 0;
-        for (; i < str.length(); i++) {
+        int it = 0;
+        for (; it < str.length(); it++) {
+            if(str.charAt(it) !=' ') {
+                break;
+            }
+        }
+        int sign = 1;
+        if(str.charAt(it) == '-') {
+            sign = -1;
+        } else if (str.charAt(it) == '+') {
+            sign = 1;
+        }
+        int res = 0;
+        for (int i = (str.charAt(it) == '+' || str.charAt(it) == '-') == false ? it : it + 1; i < str.length(); i++) {
+            int tmp = str.charAt(i) - '0';
+            if(tmp > 9 || tmp < 0) {
+                break;
+            }
+            if(Integer.MAX_VALUE/10 < res || Integer.MAX_VALUE/10 == res && Integer.MAX_VALUE %10 < tmp) {
+                return (sign == 1) ? Integer.MAX_VALUE : Integer.MIN_VALUE; 
+            }
             if (isNum(str.charAt(i))) { // this digit is a num
-                res *= 10;
-                res += (str.charAt(i) - '0');
-            } else {
-                return sign * res;
+                res = res * 10 + tmp;
             }
         }
         return sign * res;
