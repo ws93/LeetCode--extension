@@ -1,5 +1,8 @@
 public class Solution {
     public int myAtoi(String str) {
+        if(str == null) {
+            return 0;
+        }
         int sign = (str.charAt(0) == '-') ? -1 : 1;
         int res = 0, i = sign == -1 ? 1 : 0;
         for (; i < str.length(); i++) {
