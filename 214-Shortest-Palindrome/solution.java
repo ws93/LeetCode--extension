@@ -6,6 +6,9 @@ public class Solution {
         StringBuilder res = new StringBuilder();
         for(int i = s.length() - 1; i >= 0; i--) {
             if(isPalin(s, i)) {
+                if(i == s.length() - 1) {
+                    return s;
+                }
                 res.append(new StringBuilder(s.substring(i + 1)).reverse().toString());
                 res.append(s);
                 return res.toString();
