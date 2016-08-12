@@ -51,4 +51,4 @@ randomSet.getRandom();
 
 <div id="similar" class="btn btn-xs btn-warning">Show Similar Problems</div>
 
-<span class="hidebutton">[(M) Insert Delete GetRandom O(1) - Duplicates allowed](/problems/insert-delete-getrandom-o1-duplicates-allowed/)</span></div>
+<span class="hidebutton">[(H) Insert Delete GetRandom O(1) - Duplicates allowed](/problems/insert-delete-getrandom-o1-duplicates-allowed/)</span></div>
