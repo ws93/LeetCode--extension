@@ -9,23 +9,16 @@
  */
 public class Solution {
     public boolean isValidBST(TreeNode root) {
-        List<Integer> inorder = inorder(root);
-        for (int i = 0; i < inorder.size() - 1; i++) {
-            if (inorder.get(i) >= inorder.get(i + 1)) {
-                return false;
-            }
-        }
-        return true;
+        return isValidBST(root, Long.MAX_VALUE, Long.MIN_VALUE);
     }
     
-    private List<Integer> inorder(TreeNode root) {
-        List<Integer> res = new ArrayList<>();
+    private boolean isValidBST(TreeNode root, long max, long min) {
         if (root == null) {
-            return res;
+            return true;
         }
-        res.addAll(inorder(root.left));
-        res.add(root.val);
-        res.addAll(inorder(root.right));
-        return res;
+        if (root.val <= min || root.val >= max) {
+            return false;
+        } 
+        return isValidBST(root.left, root.val, min) && isValidBST(root.right, max, root.val);
     }
 }
