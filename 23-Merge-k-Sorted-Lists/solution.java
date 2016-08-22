@@ -24,10 +24,6 @@ public class Solution {
         ListNode node = res;
         while (!pq.isEmpty()) {
             node.next = new ListNode(pq.poll());
-            // node.val = pq.poll();
-            // if (pq.size() == 0) {
-            //     break;
-            // }
             node = node.next;
         }
         return res.next;
