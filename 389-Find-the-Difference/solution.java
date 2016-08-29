@@ -1,14 +1,14 @@
 public class Solution {
     public char findTheDifference(String s, String t) {
-        int[] set = new int[26];
-        for (int i = 0; i < s.length(); i++) {
-            set[s.charAt(i) - 'a']++;
-        }
-        for (int i = 0; i < t.length(); i++) {
-            if(--set[t.charAt(i) - 'a'] < 0) {
-                return t.charAt(i);
+        char[] ch1 = s.toCharArray();
+        char[] ch2 = t.toCharArray();
+        java.util.Arrays.sort(ch1);
+        java.util.Arrays.sort(ch2);
+        for (int i = 0; i < ch1.length; i++) {
+            if (ch1[i] != ch2[i]) {
+                return ch2[i];
             }
         }
-        return '0';
+        return ch2[ch2.length - 1];
     }
 }
