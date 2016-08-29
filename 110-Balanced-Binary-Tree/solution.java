@@ -17,11 +17,8 @@ public class Solution {
     		return 0;
     	}
     	int left = height(root.left), right = height(root.right);
-    	if (left == -1 || right == -1) {
+    	if (left == -1 || right == -1 || Math.abs(left - right) > 1) {
     		return -1;
-    	}
-    	if (Math.abs(left - right) > 1) {
-    	    return -1;
     	}
     	return Math.max(left, right) + 1;
 
