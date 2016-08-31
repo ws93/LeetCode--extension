@@ -8,19 +8,29 @@
  * }
  */
 public class Solution {
+    class returnType {
+        boolean balance;
+        int height;
+
+        public returnType(boolean balance, int height) {
+            this.balance = balance;
+            this.height = height;
+        }
+    }
     public boolean isBalanced(TreeNode root) {
-        return height(root) != -1;
+        return helper(root).balance;
     }
 
-    private int height(TreeNode root) {
-    	if (root == null) {
-    		return 0;
-    	}
-    	int left = height(root.left), right = height(root.right);
-    	if (left == -1 || right == -1 || Math.abs(left - right) > 1) {
-    		return -1;
-    	}
-    	return Math.max(left, right) + 1;
+    private returnType helper(TreeNode root) {
+        if (root == null) {
+            return new returnType(true, 0);
+        }
+        returnType left = helper(root.left);
+        returnType right = helper(root.right);
 
+        if (!left.balance || !right.balance || Math.abs(left.height - right.height) > 1) {
+            return new returnType(false, Math.abs(left.height - right.height) + 1);
+        }
+        return new returnType(true, Math.max(left.height, right.height) + 1);
     }
 }
