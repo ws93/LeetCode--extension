@@ -11,11 +11,7 @@ public class Solution {
     public boolean isValidBST(TreeNode root) {
         List<Integer> list = new ArrayList<>();
         inorder(root, list);
-        for (Integer i : list) {
-            System.out.println(i);
-        }
         for (int i = 0; i < list.size() - 1; i++) {
-            System.out.println(list.size());
             if (list.get(i) >= list.get(i + 1)) {
                 return false;
             }
