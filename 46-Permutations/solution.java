@@ -1,26 +1,26 @@
 public class Solution {
     public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> list = new LinkedList<>();
+        List<List<Integer>> res = new ArrayList<>();
         if (nums == null || nums.length == 0) {
-            return list;
+            return res;
         }
-        backTrack(list, new LinkedList<Integer>(), nums);
-        return list;
+        backTracking(res, new ArrayList<Integer>(), nums);
+        return res;
     }
     
-    private void backTrack(List<List<Integer>> list, List<Integer> temp, int[] nums) {
-        if (temp.size() == nums.length) {
-            list.add(new LinkedList(temp));
+    private void backTracking(List<List<Integer>> res, List<Integer> tmp, int[] nums) {
+        if (tmp.size() == nums.length) {
+            res.add(new ArrayList(tmp));
         } else {
-            for (int i = 0; i < nums.length; i++) {
-                if(temp.contains(nums[i])) {
+            for (int num : nums) {
+                if (tmp.contains(num)) {
                     continue;
+                } else {
+                    tmp.add(num);
+                    backTracking(res, tmp, nums);
+                    tmp.remove(tmp.size() - 1);
                 }
-                temp.add(nums[i]);
-                backTrack(list, temp, nums);
-                temp.remove(temp.size() - 1);
             }
         }
-        return;
     }
 }
