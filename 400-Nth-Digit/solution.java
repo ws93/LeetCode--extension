@@ -1,12 +1,14 @@
 public class Solution {
     public int findNthDigit(int n) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            sb.append(i);
-            if (sb.length() >= n) {
-                break;
-            }
+        int len = 1, start = 1;
+        long count = 9;
+        while (n > len * count) {
+            n -= len * count;
+            len++;
+            count *= 10;
+            start *= 10;
         }
-        return sb.charAt(n - 1) - 48;
+        start += (n - 1) / len;
+        return Integer.toString(start).charAt((n - 1) % len) - 48;
     }
 }
